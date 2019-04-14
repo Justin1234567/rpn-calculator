@@ -23,12 +23,13 @@ public class DivOperator extends AbstractOperator {
 		}
 
 		BigDecimal[] parameters = new BigDecimal[2];
-		parameters[0] = this.calculatorStack.pop();
 		parameters[1] = this.calculatorStack.pop();
+		parameters[0] = this.calculatorStack.pop();
 		// Add operator to cache
 		this.offerOperatorLog(parameters);
 		// Calculate and return
-		BigDecimal result = parameters[1].divide(parameters[0], 15, BigDecimal.ROUND_HALF_UP);
+		BigDecimal result = parameters[0].divide(parameters[1], 15, BigDecimal.ROUND_HALF_UP);
+		result = new BigDecimal(result.stripTrailingZeros().toPlainString());
 		this.calculatorStack.push(result);
 		return resp;
 	}

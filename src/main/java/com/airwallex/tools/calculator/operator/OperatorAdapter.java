@@ -58,7 +58,7 @@ public class OperatorAdapter {
 		// check term whether is valid command
 		OperatorResult checkResp = OperatorCommandEnum.isSupport(term);
 		if (checkResp.getStatus() != Status.SUCCESS) {
-			return resp;
+			return checkResp;
 		}
 
 		// Exec calculate

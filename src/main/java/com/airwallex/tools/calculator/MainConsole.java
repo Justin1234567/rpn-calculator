@@ -14,12 +14,13 @@ public class MainConsole {
 			System.err.println("No console.");
 			System.exit(1);
 		}
-		System.out.println("======================================================");
-		System.out.println("| RPN Calculator Created by Justin                   |");
-		System.out.println("| Supported operators: +, -, *, /, sqrt, clear, undo |");
-		System.out.println("| Please place space between numbers and operators.  |");
-		System.out.println("| Example input: 5 5 *                               |");
-		System.out.println("| 'Ctrl+C' to quit                                   |");
+		System.out.println("=========================================================");
+		System.out.println("| RPN Calculator Created by Justin                      |");
+		System.out.println("| 1. Supported operators: +, -, *, /, sqrt, clear, undo |");
+		System.out.println("| 2. Please place space between numbers and operators.  |");
+		System.out.println("|    Example input: 5 5 *                               |");
+		System.out.println("| 3. sqrt, clear, undo are case insensitive             |");
+		System.out.println("| 4. 'Ctrl+C' to quit                                   |");
 		System.out.println("======================================================");
 
 		// Init RPNCalculator

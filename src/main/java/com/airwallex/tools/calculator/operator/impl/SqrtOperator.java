@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 
 import com.airwallex.tools.calculator.model.OperatorResult;
 import com.airwallex.tools.calculator.model.OperatorResult.Status;
+import com.airwallex.tools.calculator.model.enums.ErrorCode;
 import com.airwallex.tools.calculator.model.enums.OperatorCommandEnum;
 import com.airwallex.tools.calculator.model.log.OperatorLogDeque;
 import com.airwallex.tools.calculator.model.stack.CalculatorStack;
+import com.airwallex.tools.calculator.util.BigDecimalSqrt;
 
 public class SqrtOperator extends AbstractOperator {
 
@@ -23,10 +25,17 @@ public class SqrtOperator extends AbstractOperator {
 		}
 
 		BigDecimal parameter = this.calculatorStack.pop();
+		// Check whether is negative
+		if(parameter.compareTo(BigDecimal.ZERO) < 0) {
+			// return number to stack
+			this.calculatorStack.push(parameter);
+			return new OperatorResult(ErrorCode.NEGATIVE);
+		}
+		
 		// Add operator to cache
 		this.offerOperatorLog(parameter);
 		// Calculate and return
-		BigDecimal result = parameter.multiply(parameter);
+		BigDecimal result = BigDecimalSqrt.sqrt(parameter, 15, BigDecimal.ROUND_HALF_UP);
 		this.calculatorStack.push(result);
 		return resp;
 	}

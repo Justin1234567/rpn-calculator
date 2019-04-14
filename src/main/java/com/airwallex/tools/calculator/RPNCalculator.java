@@ -35,13 +35,19 @@ public class RPNCalculator {
 
 		// Split expression to terms
 		String[] terms = expression.split("\\s");
-		int offset = 0;
+		int offset = 1;
 		for (String term : terms) {
+			if (StringUtils.isBlank(term)) {
+				// Ignore blank term
+				offset += term.length() + 1;
+				continue;
+			}
 			OperatorResult resp = operatorAdapter.exec(term);
 			if (resp.getStatus() != Status.SUCCESS) {
 				resp.setErrTermOffset(offset);
 				resp.setErrTerm(term);
-				break;
+				resp.setStack(calculatorStack);
+				return resp;
 			}
 			offset += term.length() + 1;
 		}

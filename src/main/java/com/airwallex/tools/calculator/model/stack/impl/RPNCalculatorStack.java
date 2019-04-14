@@ -71,7 +71,7 @@ public class RPNCalculatorStack implements CalculatorStack {
 		if (array != null) {
 			for (BigDecimal bigDecimal : array) {
 				bigDecimal.setScale(10, BigDecimal.ROUND_HALF_UP);
-				sb.append(bigDecimal.toString());
+				sb.append(bigDecimal.stripTrailingZeros().toPlainString());
 				sb.append(" ");
 			}
 		}

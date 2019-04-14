@@ -23,12 +23,12 @@ public class SubOperator extends AbstractOperator {
 		}
 
 		BigDecimal[] parameters = new BigDecimal[2];
-		parameters[0] = this.calculatorStack.pop();
 		parameters[1] = this.calculatorStack.pop();
+		parameters[0] = this.calculatorStack.pop();
 		// Add operator to cache
 		this.offerOperatorLog(parameters);
 		// Calculate and return
-		BigDecimal result = parameters[1].subtract(parameters[0]);
+		BigDecimal result = parameters[0].subtract(parameters[1]);
 		this.calculatorStack.push(result);
 		return resp;
 	}

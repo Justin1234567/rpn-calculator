@@ -28,7 +28,7 @@ public class OperatorLogDeque {
 		OperatorLog log = new OperatorLog(command, parameter);
 		// Inserts the specified element at the front of this deque
 		deque.offerFirst(log);
-		if (maxUndoSize > deque.size()) {
+		if (deque.size() > maxUndoSize) {
 			// Delete the longest log, if maxSize > deque.size()
 			deque.pollLast();
 		}

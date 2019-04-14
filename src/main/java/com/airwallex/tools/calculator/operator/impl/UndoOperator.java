@@ -29,6 +29,13 @@ public class UndoOperator extends AbstractOperator {
 			this.calculatorStack.addAll(operatorLog.getParameter());
 			return resp;
 		}
+		
+		// Undo number input by operator log
+		if (operatorLog.getCommand() == OperatorCommandEnum.NUMBER) {
+			// clear current statck
+			this.calculatorStack.pop();
+			return resp;
+		}
 
 		// Undo other command by operator log
 		this.calculatorStack.pop();

@@ -23,8 +23,8 @@ public class AddOperator extends AbstractOperator {
 		}
 
 		BigDecimal[] parameters = new BigDecimal[2];
-		parameters[0] = this.calculatorStack.pop();
 		parameters[1] = this.calculatorStack.pop();
+		parameters[0] = this.calculatorStack.pop();
 		// Add operator to cache
 		this.offerOperatorLog(parameters);
 		// Calculate and return
