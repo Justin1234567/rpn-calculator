@@ -7,8 +7,8 @@ import com.airwallex.tools.calculator.model.OperatorResult.Status;
 import com.airwallex.tools.calculator.model.enums.ErrorCode;
 
 public class MainConsole {
+	
 	public static void main(String[] args) {
-
 		Console console = System.console();
 		if (console == null) {
 			System.err.println("No console.");
@@ -21,14 +21,14 @@ public class MainConsole {
 		System.out.println("|    Example input: 5 5 *                               |");
 		System.out.println("| 3. sqrt, clear, undo are case insensitive             |");
 		System.out.println("| 4. 'Ctrl+C' to quit                                   |");
-		System.out.println("======================================================");
+		System.out.println("=========================================================");
 
 		// Init RPNCalculator
 		RPNCalculator calculator = new RPNCalculator(100);
 		OperatorResult result;
 
 		while (true) {
-			String expression = console.readLine(": ");
+			String expression = console.readLine();
 			result = calculator.exec(expression);
 			
 			if (result.getStatus() == Status.SUCCESS) {
@@ -38,10 +38,10 @@ public class MainConsole {
 				System.out.println(result.getStack().toString());
 			} else {
 				int offset = result.getErrTermOffset();
-				System.out.println("operator " + result.getErrTerm() + " (position: " + offset  + "):" + result.getErrorMessage());
+				System.out.println("operator " + result.getErrTerm() + " (position: " + offset  + "): " + result.getErrorMessage());
 				// Print result
 				System.out.println(result.getStack().toString());
-				String unExecExpression = expression.substring(offset, expression.length());
+				String unExecExpression = expression.substring(offset - 1, expression.length());
 				System.out.println("(expression " + unExecExpression + " were not execed, due to the previous error)");
 			}
 		}

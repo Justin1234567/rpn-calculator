@@ -50,7 +50,6 @@ public class RPNCalculatorTest extends TestCase {
 		String expression = "2 sqrt";
 		RPNCalculator calculator = new RPNCalculator(100);
 		OperatorResult result = calculator.exec(expression);
-		
 		assertTrue(result.getStatus() == Status.SUCCESS);
 		assertTrue(result.getStack().size() == 1);
 		assertTrue(result.getStack().toArray()[0].equals(new BigDecimal("1.414213562373095")));
@@ -270,5 +269,16 @@ public class RPNCalculatorTest extends TestCase {
 		assertTrue(result.getErrTermOffset() == 1);
 		assertTrue(result.getStack().size() == 1);
 		assertTrue(result.getStack().toArray()[0].equals(new BigDecimal("-9")));
+	}
+	
+	public void testDecimalExpression() {
+		// Examples 8
+		String expression = "389 25 / 1.1 * 50 + 9 - sqrt";
+		RPNCalculator calculator = new RPNCalculator(100);
+		OperatorResult result = calculator.exec(expression);
+		
+		assertTrue(result.getStatus() == Status.SUCCESS);
+		assertTrue(result.getStack().size() == 1);
+		assertTrue(result.getStack().toArray()[0].equals(new BigDecimal("7.623385074886352")));
 	}
 }

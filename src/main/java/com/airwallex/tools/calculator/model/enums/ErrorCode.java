@@ -5,7 +5,7 @@ public enum ErrorCode {
 	INSUFFICIENT_PARAMETERS("100", "insufficient parametes"),
 	UNSUPPORTED_CMD("101", "unsupported cmd"),
 	EXPRESSION_BLANK("102", "expression is blank"),
-	NEGATIVE("103", "sqrt can't be negative");
+	NEGATIVE("103", "sqrt number can't be negative");
 
 	private String code;
 	private String desc;

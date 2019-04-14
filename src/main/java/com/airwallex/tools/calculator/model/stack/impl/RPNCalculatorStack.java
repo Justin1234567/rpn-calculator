@@ -70,8 +70,8 @@ public class RPNCalculatorStack implements CalculatorStack {
 		BigDecimal[] array = this.toArray();
 		if (array != null) {
 			for (BigDecimal bigDecimal : array) {
-				bigDecimal.setScale(10, BigDecimal.ROUND_HALF_UP);
-				sb.append(bigDecimal.stripTrailingZeros().toPlainString());
+				BigDecimal c = bigDecimal.setScale(10, BigDecimal.ROUND_HALF_UP);
+				sb.append(c.stripTrailingZeros().toPlainString());
 				sb.append(" ");
 			}
 		}
