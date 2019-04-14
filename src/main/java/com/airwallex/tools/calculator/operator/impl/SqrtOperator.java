@@ -35,7 +35,7 @@ public class SqrtOperator extends AbstractOperator {
 		// Add operator to cache
 		this.offerOperatorLog(parameter);
 		// Calculate and return
-		BigDecimal result = BigDecimalSqrt.sqrt(parameter, 15, BigDecimal.ROUND_HALF_UP);
+		BigDecimal result = BigDecimalSqrt.sqrt(parameter, CalculatorStack.CAL_SCALE, BigDecimal.ROUND_HALF_UP);
 		this.calculatorStack.push(result);
 		return resp;
 	}

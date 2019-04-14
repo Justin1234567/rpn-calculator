@@ -28,7 +28,7 @@ public class DivOperator extends AbstractOperator {
 		// Add operator to cache
 		this.offerOperatorLog(parameters);
 		// Calculate and return
-		BigDecimal result = parameters[0].divide(parameters[1], 15, BigDecimal.ROUND_HALF_UP);
+		BigDecimal result = parameters[0].divide(parameters[1], CalculatorStack.CAL_SCALE, BigDecimal.ROUND_HALF_UP);
 		result = new BigDecimal(result.stripTrailingZeros().toPlainString());
 		this.calculatorStack.push(result);
 		return resp;

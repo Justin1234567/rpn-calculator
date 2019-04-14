@@ -11,6 +11,10 @@ import java.math.BigDecimal;
  * @param <E>
  */
 public interface CalculatorStack {
+	
+	public static int CAL_SCALE = 15;
+	public static int DISPLAY_SCALE = 10;
+	
 	/**
 	 * Push an item onto the top of a stack
 	 * 
